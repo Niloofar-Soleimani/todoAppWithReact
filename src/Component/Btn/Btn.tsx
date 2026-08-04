@@ -1,5 +1,6 @@
 import type { Icon } from "@phosphor-icons/react";
 
+
 type BtnType = {
 	title: string;
 	IconTextStart?: Icon;
@@ -13,33 +14,35 @@ type BtnType = {
 };
 
 export function Btn({
-  title,
-  IconTextStart,
-  IconEnd,
-  IconTextEnd,
-  IconStart,
-  disabled = false,
-  style,
-  color,
-  onclick,
+	title,
+	IconTextStart,
+	IconEnd,
+	IconTextEnd,
+	IconStart,
+	disabled = false,
+	style,
+	color,
+	onclick,
 }: BtnType) {
-  const className = getBtnStyles(color, style);
-  const iconWeight = style === "filled" ? "fill" : "regular";
-  return (
-    <button
-      type="button"
-      className={className}
-      disabled={disabled}
-      onClick={onclick}
-    >
-      {IconStart && <IconStart size={20} weight="fill" />}
-      {IconTextStart && <IconTextStart size={20} weight={iconWeight} />}
 
-      <span>{title}</span>
-      {IconTextEnd && <IconTextEnd size={20} weight={iconWeight} />}
-      {IconEnd && <IconEnd size={20} weight={iconWeight} />}
-    </button>
-  );
+
+	const className = getBtnStyles(color, style);
+	const iconWeight = style === "filled" ? "fill" : "regular";
+	return (
+		<button
+			type="button"
+			className={className}
+			disabled={disabled}
+			onClick={onclick}
+		>
+			{IconStart && <IconStart size={20} weight="fill" />}
+			{IconTextStart && <IconTextStart size={20} weight={iconWeight} />}
+
+			<span>{title}</span>
+			{IconTextEnd && <IconTextEnd size={20} weight={iconWeight} />}
+			{IconEnd && <IconEnd size={20} weight={iconWeight} />}
+		</button>
+	);
 }
 
 function getBtnStyles(

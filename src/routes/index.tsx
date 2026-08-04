@@ -1,9 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Navigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
 	component: RouteComponent,
 });
 
 function RouteComponent() {
-	return <div className="w-[50%] bg-amber-400 h-dvh"> خوش آمدی!</div>;
+	 const value=localStorage.getItem("starteed");
+const started:boolean=value?JSON.parse(value):false;
+const destination=started ? "/home" : "/intro"
+
+	 
+return <Navigate to={destination} />;
 }

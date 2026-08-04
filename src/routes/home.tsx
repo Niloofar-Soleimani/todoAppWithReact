@@ -1,7 +1,6 @@
-import { CaretLeft, PlusIcon } from "@phosphor-icons/react";
-import { CheckSquareIcon } from "@phosphor-icons/react/dist/ssr/CheckSquare";
-import { HouseIcon } from "@phosphor-icons/react/dist/ssr/House";
-import { createFileRoute, Link, useLocation } from "@tanstack/react-router";
+import { CaretLeft } from "@phosphor-icons/react";
+
+import { createFileRoute } from "@tanstack/react-router";
 import { BottomBar } from "../Component/BottomBar/BottomBar";
 import { Btn } from "../Component/Btn/Btn";
 import { TopBar } from "../Component/TopBar/TopBar";
