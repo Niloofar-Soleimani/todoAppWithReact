@@ -8,6 +8,7 @@ import { Btn } from "../Component/Btn/Btn";
 import { TopBar } from "../Component/TopBar/TopBar";
 import { TasksContext, type Task } from "../Component/shared/tasks.context";
 import { StarContext } from "../Component/shared/star.contex";
+import { generateRandomCelebrationMessage, generateRandomInspiringMessage } from "../Component/shared/randomMessages";
 
 export const Route = createFileRoute("/home")({
 	component: RouteComponent,
@@ -50,7 +51,7 @@ function Main() {
 
 	return startedTaskId ? (
     <main className="flex flex-col p-4 gap-8 items-center justify-center flex-1 text-center">
-      <p className="font-bold text-stone-900 ">انجامش بده 💪</p>
+      <p className="font-bold text-stone-900 ">  {generateRandomInspiringMessage()}</p>
       <p className="font-bold text-3xl text-stone-900">{staredTask.title}</p>
       <Btn
         className=" w-full flex flex-wrap items-center justify-center gap-3 "
@@ -86,7 +87,7 @@ function CelebrationContent({ onContinueBtnClick }: celebrationContentProps) {
 	return (
     <main className="flex flex-col p-4 gap-8 items-center justify-center flex-1 text-center ">
       <img src={donetask} alt="" />
-      <p className="font-bold text-stone-900 text-3xl">آفرین به تو! 🎉</p>
+      <p className="font-bold text-stone-900 text-3xl"> {generateRandomCelebrationMessage()} </p>
 
       <Btn
         className=" w-full flex flex-wrap items-center justify-center gap-3  "
