@@ -3,10 +3,10 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { routeTree } from "./routeTree.gen";
 import "./style.css";
+import { StarProvider } from "./Component/shared/star.contex";
+import { TasksProvider } from "./Component/shared/tasks.context";
 import { NotFound } from "./routes/-NotFound";
 import { pending } from "./routes/-pending";
-import { TasksProvider } from "./Component/shared/tasks.context";
-import { StarProvider } from "./Component/shared/star.contex";
 
 const router = createRouter({
 	routeTree,
@@ -21,11 +21,11 @@ if (container == null) {
 const root = createRoot(container);
 
 root.render(
-  <StrictMode>
-    <TasksProvider>
-      <StarProvider>
-        <RouterProvider router={router} />
-      </StarProvider>
-    </TasksProvider>
-  </StrictMode>
+	<StrictMode>
+		<TasksProvider>
+			<StarProvider>
+				<RouterProvider router={router} />
+			</StarProvider>
+		</TasksProvider>
+	</StrictMode>,
 );

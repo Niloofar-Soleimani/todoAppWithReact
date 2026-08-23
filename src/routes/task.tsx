@@ -6,9 +6,9 @@ import useLocalStorage from "use-local-storage";
 import arrowdown from "../assets/image/Arrow 1.png";
 import noteImage from "../assets/image/undraw_no-data_ig65 1.png";
 import { BottomBar } from "../Component/BottomBar/BottomBar";
-import { TopBar } from "../Component/TopBar/TopBar";
-import { type Task, TasksContext } from "../Component/shared/tasks.context";
 import { StarContext } from "../Component/shared/star.contex";
+import { type Task, TasksContext } from "../Component/shared/tasks.context";
+import { TopBar } from "../Component/TopBar/TopBar";
 
 export const Route = createFileRoute("/task")({
 	component: RouteComponent,
@@ -70,30 +70,31 @@ function TaskItem({ id, title, isCompleted }: TaskItemProps) {
 	const handleCompletedBtnClick = () => {
 		return toggleTaskCompleted(id);
 	};
-	 const handleStarBtnClick = () => {
-		
-		 return setStartedTaskId(isCompleted? "" : isThisTaskStared ? "" : id )}
+	const handleStarBtnClick = () => {
+		return setStartedTaskId(isCompleted ? "" : isThisTaskStared ? "" : id);
+	};
 	return (
-    <div className={`flex w-full h-12 ${isCompleted ? "text-stone-600 line-through" : "text-stone-900"} `}>
-      <button type="button" onClick={handleCompletedBtnClick}>
-        <IsCopmpletedIcon size={24} />
-      </button>
+		<div
+			className={`flex w-full h-12 ${isCompleted ? "text-stone-600 line-through" : "text-stone-900"} `}
+		>
+			<button type="button" onClick={handleCompletedBtnClick}>
+				<IsCopmpletedIcon size={24} />
+			</button>
 
-      <button
-        type="button"
-        className={`cursor-pointer flex-1 text-start px-3 ${isCompleted}`}
-      >
-		
-        {title}
-      </button>
+			<button
+				type="button"
+				className={`cursor-pointer flex-1 text-start px-3 ${isCompleted}`}
+			>
+				{title}
+			</button>
 
-      <button
-        type="button"
-        className={`cursor-pointer p-3 ${isThisTaskStared ? "text-orange-500": null}`}
-        onClick={handleStarBtnClick}
-      >
-        <StarIcon size={24} weight={isThisTaskStared ? "fill" :"regular"} />
-      </button>
-    </div>
-  );
+			<button
+				type="button"
+				className={`cursor-pointer p-3 ${isThisTaskStared ? "text-orange-500" : null}`}
+				onClick={handleStarBtnClick}
+			>
+				<StarIcon size={24} weight={isThisTaskStared ? "fill" : "regular"} />
+			</button>
+		</div>
+	);
 }

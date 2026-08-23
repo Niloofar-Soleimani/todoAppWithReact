@@ -10,7 +10,7 @@ type BtnType = {
 	color?: "brand" | "neutral" | "danger";
 	style?: "light" | "filled";
 	onclick?: () => void;
-	  className?:string;
+	className?: string;
 };
 
 export function Btn({
@@ -22,26 +22,26 @@ export function Btn({
 	disabled = false,
 	style,
 	color,
-	className="",
+	className = "",
 	onclick,
 }: BtnType) {
 	const btnStyles = getBtnStyles(color, style);
 	const iconWeight = style === "filled" ? "fill" : "regular";
 	return (
-    <button
-      type="button"
-      className={`${btnStyles} ${className}`}
-      disabled={disabled}
-      onClick={onclick}
-    >
-      {IconStart && <IconStart size={20} weight="fill" />}
-      {IconTextStart && <IconTextStart size={20} weight={iconWeight} />}
+		<button
+			type="button"
+			className={`${btnStyles} ${className}`}
+			disabled={disabled}
+			onClick={onclick}
+		>
+			{IconStart && <IconStart size={20} weight="fill" />}
+			{IconTextStart && <IconTextStart size={20} weight={iconWeight} />}
 
-      <span>{title}</span>
-      {IconTextEnd && <IconTextEnd size={20} weight={iconWeight} />}
-      {IconEnd && <IconEnd size={20} weight={iconWeight} />}
-    </button>
-  );
+			<span>{title}</span>
+			{IconTextEnd && <IconTextEnd size={20} weight={iconWeight} />}
+			{IconEnd && <IconEnd size={20} weight={iconWeight} />}
+		</button>
+	);
 }
 
 function getBtnStyles(

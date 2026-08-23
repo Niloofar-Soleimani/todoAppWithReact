@@ -1,7 +1,8 @@
 import type React from "react";
 import { createContext } from "react";
-// import useLocalStorage from "use-local-storage";
+
 import * as useLocalStorage from "use-local-storage";
+import { v4 as uuidv4 } from "uuid";
 
 export type Task = {
 	id: string;
@@ -116,15 +117,16 @@ type ITasksContext = {
 	tasks: Task[];
 	setTasks: (tasks: Task[]) => void;
 	toggleTaskCompleted: (taskId: Task["id"]) => void;
+	createTask: (taskTitle: Task["title"]) => void;
 };
 export const TasksContext = createContext<ITasksContext>({
 	tasks: [],
 	setTasks: () => {},
 	toggleTaskCompleted: () => {},
+	createTask: () => {},
 });
 export function TasksProvider({ children }: { children: React.ReactNode }) {
-
-	const useLocalstorage=useLocalStorage.default.default;
+	const useLocalstorage = useLocalStorage.default.default;
 	const [tasks, setTasks] = useLocalstorage<Task[]>("tasks", [...sampleTasks]);
 	const toggleTaskCompleted = (taskId: Task["id"]) => {
 		const cloneTasks = [...tasks];
@@ -133,8 +135,18 @@ export function TasksProvider({ children }: { children: React.ReactNode }) {
 		);
 		setTasks(changeTasks);
 	};
+
+	const createTask = (taskTitle: Task["title"]) => {
+		const newTask: Task = {
+			title: taskTitle,
+			id: uuidv4(),
+			isCompleted: false,
+		};
+		const newTasks = [...tasks, newTask];
+		setTasks(newTasks);
+	};
 	return (
-		<TasksContext value={{ tasks, setTasks, toggleTaskCompleted }}>
+		<TasksContext value={{ tasks, setTasks, toggleTaskCompleted, createTask }}>
 			{children}
 		</TasksContext>
 	);
