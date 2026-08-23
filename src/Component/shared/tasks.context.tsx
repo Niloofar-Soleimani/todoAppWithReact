@@ -123,7 +123,7 @@ export const TasksContext = createContext<ITasksContext>({
 	toggleTaskCompleted: () => {},
 });
 export function TasksProvider({ children }: { children: React.ReactNode }) {
-	console.log(useLocalStorage);
+
 	const useLocalstorage=useLocalStorage.default.default;
 	const [tasks, setTasks] = useLocalstorage<Task[]>("tasks", [...sampleTasks]);
 	const toggleTaskCompleted = (taskId: Task["id"]) => {

@@ -70,7 +70,9 @@ function TaskItem({ id, title, isCompleted }: TaskItemProps) {
 	const handleCompletedBtnClick = () => {
 		return toggleTaskCompleted(id);
 	};
-	 const handleStarBtnClick = () => setStartedTaskId(isThisTaskStared ? null : id )
+	 const handleStarBtnClick = () => {
+		
+		 return setStartedTaskId(isCompleted? "" : isThisTaskStared ? "" : id )}
 	return (
     <div className={`flex w-full h-12 ${isCompleted ? "text-stone-600 line-through" : "text-stone-900"} `}>
       <button type="button" onClick={handleCompletedBtnClick}>

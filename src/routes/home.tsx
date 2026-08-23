@@ -39,7 +39,7 @@ function Main() {
 	};
 	const handleDidItBtnClick = () => {
 		if (!startedTaskId) return;
-		setStartedTaskId(null);
+		setStartedTaskId("");
 		toggleTaskCompleted(startedTaskId);
 		setCelebration(true);
 	};
