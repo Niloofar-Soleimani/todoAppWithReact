@@ -45,13 +45,13 @@ export function BottomBar() {
 					</button>
 				</div>
 				<Link
-					to="/task"
+					to="/tasks/"
 					activeProps={{ className: "font-bold text-stone-900" }}
 					className="flex-1 h-full text-xs text-stone-600 flex flex-col items-center justify-center gap-1"
 				>
 					<CheckSquareIcon
 						size={24}
-						weight={location.pathname === "/task" ? "fill" : "regular"}
+						weight={location.pathname === "/tasks/" ? "fill" : "regular"}
 					/>
 					کارها
 				</Link>
@@ -70,10 +70,9 @@ function CreateTaskSheet({ onClose }: CreateTasksheetProps) {
 	const handleCreateTaskBtnClick = () => {
 		createTask(taskName);
 		setTaskName("");
-		if(taskName === ""){
-
-			alert ( ' مقدار تسک را وارد کنید')
-		return createTask(taskName)
+		if (taskName === "") {
+			alert(" مقدار تسک را وارد کنید");
+			return createTask(taskName);
 		}
 	};
 	return (
